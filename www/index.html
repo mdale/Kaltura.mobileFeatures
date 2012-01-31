@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Kaltura Mobile Features Overview</title>
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+	<meta charset="utf-8">
+	<script type="text/javascript" charset="utf-8" src="lib/phonegap/phonegap.js"></script>  
+		
+
+	<link rel="stylesheet" href="css/kmf-docs.css" />
+	
+	<script src="lib/jquery/jquery.min.js"></script>
+	
+    <script src="lib/jquery/jquery.mobile.min.js"></script>
+    <link rel="stylesheet" href="lib/jquery/jquery.mobile.min.css" />
+    
+    <script>
+        $( document ).bind( "mobileinit", function() {
+            // Make your jQuery Mobile framework configuration changes here!
+            $.mobile.allowCrossDomainPages = true;
+        });
+    </script>
+  </head>
+  <body onload="onBodyLoad()">
+  <div data-role="page" class="type-home">
+	<div data-role="content">
+		<div class="content-secondary">
+
+			<div id="kmf-homeheader">
+				<div id="kaltura-logo-sm"></div>
+				<p style="margin:auto"> Kaltura Mobile Features Overview</p>
+			</div>
+
+			<p class="intro"><strong>Welcome.</strong> to the Kaltura platform mobile features overview.</p>
+
+			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="f">
+				<li data-role="list-divider">Overview</li>
+				<li><a href="docs/about/getting-started.html">Quick start guide</a></li>
+				<li><a href="docs/about/intro.html">Architecture overview</a></li>
+				<li><a href="docs/about/platforms.html">Supported platforms</a></li>
+			</ul>
+
+		</div><!--/content-primary-->
+
+		<div class="content-primary">
+			<nav>
+				<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
+					<li data-role="list-divider">HTML5</li>
+					<li><a href="http://cdnakmi.kaltura.org/apis/html5versions/1.6.5/modules/KalturaSupport/tests/BasicPlayer.qunit.html">Basic Player</a></li>
+					<li><a href="http://cdnakmi.kaltura.org/apis/html5versions/1.6.5/modules/KalturaSupport/tests/PlaylistVertical.html">Playlist UiConf UI</a></li>
+					<li><a href="docs/buttons/index.html">Playlist Mobile UI</a></li>
+					<li><a href="docs/content/index.html">503 Accessible Player</a></li>
+					
+					<li data-role="list-divider">Native iOS</li>
+					<li><a href="docs/pages/index.html">iPhone inline HTML5 Player</a></li>
+					<li><a href="docs/api/globalconfig.html">Objective C Client library</a></li>
+					<li><a href="docs/api/events.html">iOS Custom Native Player</a></li>
+					
+				</ul>
+			</nav>
+		</div>
+	</div>
+
+</div>
+  </body>
+</html>
