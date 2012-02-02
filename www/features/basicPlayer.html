@@ -5,13 +5,20 @@
   
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
 	<meta charset="utf-8">
-	<script type="text/javascript" charset="utf-8" src="lib/phonegap/phonegap.js"></script>  
-	<link rel="stylesheet" href="css/kmf-docs.css" />
-	<script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/jquery/jquery.mobile.min.js"></script>
-    <link rel="stylesheet" href="lib/jquery/jquery.mobile.min.css" />
+	<script type="text/javascript" charset="utf-8" src="../lib/phonegap/phonegap.js"></script>  
+	<link rel="stylesheet" href="../css/kmf-docs.css" />
+	<script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../lib/jquery/jquery.mobile.min.js"></script>
+    <link rel="stylesheet" href="../lib/jquery/jquery.mobile.min.css" />
     <script src="http://cdnbakmi.kaltura.com/html5/html5lib/v1.6.6/mwEmbedLoader.php"><</script>
     
+    <script>
+        $( document ).bind( "mobileinit", function() {
+            // Make your jQuery Mobile framework configuration changes here!
+            $.mobile.allowCrossDomainPages = true;
+            $.mobile.page.addBackBtn = true;
+        });
+    </script>
   </head>
   <body>
   <div data-role="page" class="type-home" data-theme="b">
