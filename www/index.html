@@ -6,19 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
 	<meta charset="utf-8">
 	<script type="text/javascript" charset="utf-8" src="lib/phonegap/phonegap.js"></script>  
-		
-
 	<link rel="stylesheet" href="css/kmf-docs.css" />
-	
 	<script src="lib/jquery/jquery.min.js"></script>
-	
     <script src="lib/jquery/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="lib/jquery/jquery.mobile.min.css" />
+    <script src="http://cdnbakmi.kaltura.com/html5/html5lib/v1.6.6/mwEmbedLoader.php"><</script>
     
     <script>
         $( document ).bind( "mobileinit", function() {
             // Make your jQuery Mobile framework configuration changes here!
             $.mobile.allowCrossDomainPages = true;
+            $.mobile.page.addBackBtn = true;
         });
     </script>
   </head>
@@ -47,12 +45,12 @@
 			<nav>
 				<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
 					<li data-role="list-divider">HTML5</li>
-					<li><a href="http://cdnakmi.kaltura.org/apis/html5versions/1.6.5/modules/KalturaSupport/tests/BasicPlayer.qunit.html">Basic Player</a></li>
+					<li><a href="features/basicPlayer.html">Basic Player</a></li>
 					<li><a href="http://cdnakmi.kaltura.org/apis/html5versions/1.6.5/modules/KalturaSupport/tests/PlaylistVertical.html">Playlist UiConf UI</a></li>
 					<li><a href="docs/buttons/index.html">Playlist Mobile UI</a></li>
-					<li><a href="docs/content/index.html">503 Accessible Player</a></li>
+					<li><a href="docs/content/index.html">KModerate</a></li>
 					
-					<li data-role="list-divider">Native iOS</li>
+					<li data-role="list-divider">iOS Features</li>
 					<li><a href="docs/pages/index.html">iPhone inline HTML5 Player</a></li>
 					<li><a href="docs/api/globalconfig.html">Objective C Client library</a></li>
 					<li><a href="docs/api/events.html">iOS Custom Native Player</a></li>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Basic Player</title>
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+	<meta charset="utf-8">
+	<script type="text/javascript" charset="utf-8" src="lib/phonegap/phonegap.js"></script>  
+	<link rel="stylesheet" href="css/kmf-docs.css" />
+	<script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery/jquery.mobile.min.js"></script>
+    <link rel="stylesheet" href="lib/jquery/jquery.mobile.min.css" />
+    <script src="http://cdnbakmi.kaltura.com/html5/html5lib/v1.6.6/mwEmbedLoader.php"><</script>
+    
+  </head>
+  <body>
+  <div data-role="page">
+  	<div data-role="header" data-add-back-btn="true">
+  	
+  	<a href="../index.html" data-add-back-btn="true">Back</a>
+		<h1>Basic Player</h1>
+	</div>
+	
+	<p>Highlights basic html5 player </p> 
+  	<div id="myVideoTarget" style="width:400px;height:330px;">
+</div>
+<script>
+	kWidget.embed({
+		'targetId': 'myVideoTarget',
+		'wid': '_243342',
+		'uiconf_id' : '2877502',
+		'entry_id' : '0_uka1msg4',
+		'readyCallback': function( playerId ){
+			console.log( "kWidget player ready: " + playerId );
+			var kdp = $('#' + playerId ).get(0);
+			//kdp.addJsListener( 'doPlay', 'doPlayCallback');
+		}
+	});
+</script>
+</div>
+  </body>
+</html>
