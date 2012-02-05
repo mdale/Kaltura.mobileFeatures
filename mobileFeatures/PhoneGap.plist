@@ -22,6 +22,7 @@
 	<array>
 		<string>*.kaltura.com</string>
 		<string>*.kaltura.org</string>
+		<string>*.kaltura.com*</string>
 	</array>
 	<key>Plugins</key>
 	<dict>

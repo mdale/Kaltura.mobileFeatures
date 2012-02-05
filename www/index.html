@@ -6,19 +6,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
 	<meta charset="utf-8">
 	<script type="text/javascript" charset="utf-8" src="lib/phonegap/phonegap.js"></script>  
+		
+
 	<link rel="stylesheet" href="css/kmf-docs.css" />
+	
 	<script src="lib/jquery/jquery.min.js"></script>
+	
     <script src="lib/jquery/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="lib/jquery/jquery.mobile.min.css" />
-    <script src="http://cdnbakmi.kaltura.com/html5/html5lib/v1.6.6/mwEmbedLoader.php"><</script>
+        <script src="http://cdnbakmi.kaltura.com/html5/html5lib/v1.6.6/mwEmbedLoader.php"><</script>
     
     <script>
         $( document ).bind( "mobileinit", function() {
             // Make your jQuery Mobile framework configuration changes here!
             $.mobile.allowCrossDomainPages = true;
-            $.mobile.page.addBackBtn = true;
         });
     </script>
+    
+    
+    <script> 
+    var getPlaylistRequestUrl = function( wid, playlistId ){
+  		return 'http://www.kaltura.com/api_v3/index.php?service=multirequest&format=9' +
+  				'&callback=?&1:service=session&1:action=startWidgetSession&1:widgetId=' + 
+  				wid + '&2:service=playlist&2:action=execute&2:ks={1:result:ks}&2:id=' + 
+  				playlistId;
+  	};
+  	
+	$('#basicPlayer').live('pagecreate', function(){
+		kWidget.embed({
+		'targetId': 'myVideoTarget',
+		'wid': '_243342',
+		'uiconf_id' : '2877502',
+		'entry_id' : '0_uka1msg4',
+		'readyCallback': function( playerId ){
+			console.log( "kWidget player ready: " + playerId );
+			var kdp = $('#' + playerId ).get(0);
+			//kdp.addJsListener( 'doPlay', 'doPlayCallback');
+		}
+	});
+	});
+	
+	
+  	$('#playlistConfig').live('pagecreate', function(){
+		$('#buildPlaylist').click(function(){
+			$( this ).fadeOut('fast');
+			// set the page to loading:
+			$.mobile.showPageLoadingMsg();
+		
+			$('#configurePlaylist').fadeOut('fast');
+			var widgetId = '_' + $('#partnerId').val();
+			var playlistId = $('#playlistId').val();  
+			$.getJSON( getPlaylistRequestUrl(widgetId, playlistId), function(data){
+				var plList = data[1];
+				$ulTarget = $('#playlistContainer ul');
+				$.each( plList, function( inx, clip ){
+					$ulTarget.append( 
+							$('<li />').append( 
+								$('<a />').attr('href', '#').append(
+									$('<img />').attr('src', clip.thumbnailUrl ),
+									$('<h3 />').text( clip.name ),
+									$('<p />').text( clip.description )
+								)
+							).click(function(){
+								$('body').append( 
+									$("<div />")
+									.attr( 'data-role', 'dialog' )
+									.append( 
+										$('<h3 />').text( clip.name ),
+										$('<div />')
+											.attr('id', 'videoTarget')
+											.css({
+												'width': '300px',
+												'height': '400px'
+											})
+									)
+								)
+								kWidget.embed( 'videoTarget', {
+									'wid' : widgetId,
+									'uiconf_id' : '0_uka1msg4',
+									'entry_id': clip.id
+								});
+							})
+					)					
+				});
+				$.mobile.hidePageLoadingMsg();
+				//debugger;
+				$ulTarget.listview("refresh");
+				
+				
+			})
+		});  		
+  	});
+  </script>
+    
+    
+    
   </head>
   <body>
   <div data-role="page" class="type-home">
@@ -48,9 +130,9 @@
 					<li><a href="features/basicPlayer.html">Basic Player</a></li>
 					<li><a href="http://cdnakmi.kaltura.org/apis/html5versions/1.6.5/modules/KalturaSupport/tests/PlaylistVertical.html">Playlist UiConf UI</a></li>
 					<li><a href="features/playlistMobileUi.html">Playlist Mobile UI</a></li>
-					<li><a href="docs/content/index.html">KModerate</a></li>
+					<li><a href="docs/content/index.html">503 Accessible Player</a></li>
 					
-					<li data-role="list-divider">iOS Features</li>
+					<li data-role="list-divider">Native iOS</li>
 					<li><a href="docs/pages/index.html">iPhone inline HTML5 Player</a></li>
 					<li><a href="docs/api/globalconfig.html">Objective C Client library</a></li>
 					<li><a href="docs/api/events.html">iOS Custom Native Player</a></li>

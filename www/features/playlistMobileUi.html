@@ -18,51 +18,12 @@
             $.mobile.allowCrossDomainPages = true;
             $.mobile.page.addBackBtn = true;
         });
+        alert('in head');
     </script>
   </head>
   <body>
   
-  <script> 
-  	var getPlaylistRequestUrl = function( wid, playlistId ){
-  		return 'http://www.kaltura.com/api_v3/index.php?service=multirequest&format=9' +
-  				'&callback=?&1:service=session&1:action=startWidgetSession&1:widgetId=' + 
-  				wid + '&2:service=playlist&2:action=execute&2:ks={1:result:ks}&2:id=' + 
-  				playlistId;
-  	};
-  	
-  	$('#playlistConfig').live('pagecreate', function(){
-		$('#buildPlaylist').click(function(){
-			console.log( 'buildPlaylist ');
-			$( this ).fadeOut('fast');
-			// set the page to loading:
-			$.mobile.showPageLoadingMsg();
-		
-			$('#configurePlaylist').fadeOut('fast');
-			var widgetId = '_' + $('#partnerId').val();
-			var playlistId = $('#playlistId').val();  
-			$.getJSON( getPlaylistRequestUrl(widgetId, playlistId), function(data){
-				var plList = data[1];
-				$ulTarget = $('#playlistContainer ul');
-				$.each( plList, function( inx, clip ){
-					$ulTarget.append( 
-							$('<li />').append( 
-								$('<a />').attr('href', '#').append(
-									$('<img />').attr('src', clip.thumbnailUrl ),
-									$('<h3 />').text( clip.name ),
-									$('<p />').text( clip.description )
-								)
-							)
-					)					
-				});
-				$.mobile.hidePageLoadingMsg();
-				//debugger;
-				$ulTarget.listview("refresh");
-				
-				
-			})
-		});  		
-  	});
-  </script>
+  
   
   <div id="playlistConfig" data-role="page" class="type-home" data-theme="b">
 	  	<div data-role="header" data-add-back-btn="true" data-theme="b">
